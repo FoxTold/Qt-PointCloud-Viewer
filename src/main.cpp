@@ -1,6 +1,8 @@
 #include <QGuiApplication>
 #include <QQmlApplicationEngine>
 
+#include <spdlog/spdlog.h>
+
 int main(int argc, char *argv[])
 {
     QGuiApplication app(argc, argv);
@@ -21,5 +23,9 @@ int main(int argc, char *argv[])
 
     engine.load(url);
 
+    spdlog::info("Popciu to kozak");
+    spdlog::info("Popciu to kozak");
+    spdlog::info("Popciu to kozak");
+    
     return app.exec();
 }
