@@ -1,3 +1,0 @@
-[submodule "deps/qt5"]
-	path = deps/qt5
-	url = https://github.com/qt/qt5.git
