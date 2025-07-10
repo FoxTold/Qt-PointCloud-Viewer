@@ -9,23 +9,59 @@ ApplicationWindow {
     minimumWidth: 1280
     minimumHeight: 720
     visible: true
+    title: "Point Cloud Viewer"
 
-    RowLayout {
+    ColumnLayout {
+        id: mainLayout
+        spacing: 0
         anchors.fill: parent
 
-        Rectangle {
-            id: menuBar
-            color: "tomato"
+        RowLayout {
+            id: topSection
+            Layout.fillWidth: true
             Layout.fillHeight: true
-            Layout.preferredWidth: parent.width * 0.25
-            Layout.maximumWidth: root.minimumWidth * 0.25
+            Layout.preferredHeight: root.height * 0.8
+            spacing: 0
+
+            Rectangle {
+                visible: false
+                id: menuBar
+                color: "tomato"
+                Layout.fillHeight: true
+                Layout.preferredWidth: root.width * 0.25
+            }
+
+            Rectangle {
+                id: contentArea
+                color: "lightblue"
+                Layout.fillHeight: true
+                Layout.fillWidth: true
+                Button {
+                    id: openMenuBarButton
+                    text: "X"
+                    anchors {
+                        top: parent.top
+                        left: parent.left
+                    }
+                    onClicked: {
+                        // Placeholder for point cloud loading logic
+                        logArea.text += ": Menu Bar " + menuBar.visible  +"\n";
+                        menuBar.visible = !menuBar.visible;
+                    }
+                }
+            }
         }
 
-        Rectangle {
-            id: contentArea
-            color: "lightblue"
-            Layout.fillHeight: true
-            Layout.preferredWidth: parent.width - menuBar.width
+        TextArea {
+            id: logArea
+            Layout.fillWidth: true
+            Layout.preferredHeight: root.height * 0.2
+            readOnly: true
+            text: "Log output will appear here."
+            wrapMode: TextArea.Wrap
+            font.family: "Courier New"
+            font.pointSize: 10
+            color: "black"
         }
     }
 }
