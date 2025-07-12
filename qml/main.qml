@@ -24,8 +24,8 @@ ApplicationWindow {
             spacing: 0
 
             Rectangle {
-                visible: false
                 id: menuBar
+                visible: false
                 color: "tomato"
                 Layout.fillHeight: true
                 Layout.preferredWidth: root.width * 0.25
@@ -45,23 +45,24 @@ ApplicationWindow {
                     }
                     onClicked: {
                         // Placeholder for point cloud loading logic
-                        logArea.text += ": Menu Bar " + menuBar.visible  +"\n";
+                        logArea.text += ": Menu Bar " + menuBar.visible + "\n";
                         menuBar.visible = !menuBar.visible;
                     }
                 }
             }
         }
 
-        TextArea {
-            id: logArea
-            Layout.fillWidth: true
+        ScrollView {
+            id: view
             Layout.preferredHeight: root.height * 0.2
-            readOnly: true
-            text: "Log output will appear here."
-            wrapMode: TextArea.Wrap
-            font.family: "Courier New"
-            font.pointSize: 10
-            color: "black"
+            Layout.fillWidth: true
+
+            TextArea {
+                id: logArea
+                readOnly: true
+                wrapMode: TextArea.Wrap
+                text: "Log initialized..."
+            }
         }
     }
 }

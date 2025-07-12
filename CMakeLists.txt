@@ -18,11 +18,10 @@ add_subdirectory(deps)
 find_package(Qt6 REQUIRED COMPONENTS Core Widgets Qml Quick)
 
 add_executable(pointcloud_viewer
-    src/main.cpp
+     src/main.cpp
 )
 
-
-target_link_libraries(pointcloud_viewer PRIVATE Qt6::Core Qt6::Widgets Qt6::Qml Qt6::Quick spdlog::spdlog)
+target_link_libraries(pointcloud_viewer PRIVATE Qt6::Core Qt6::Widgets Qt6::Qml Qt6::Quick)
 
 target_compile_definitions(pointcloud_viewer PRIVATE
     QML_IMPORT_PATH="\"${QT_DIR}/qml\""
