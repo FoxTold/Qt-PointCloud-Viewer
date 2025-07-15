@@ -17,9 +17,17 @@ add_subdirectory(deps)
 
 find_package(Qt6 REQUIRED COMPONENTS Core Widgets Qml Quick)
 
-add_executable(pointcloud_viewer
-     src/main.cpp
+set(SOURCES
+    src/main.cpp
+    src/utils/Singleton.h
+    src/ui/Logger.h
 )
+
+add_executable(pointcloud_viewer
+     ${SOURCES}
+)
+
+target_include_directories(pointcloud_viewer PRIVATE src)
 
 target_link_libraries(pointcloud_viewer PRIVATE Qt6::Core Qt6::Widgets Qt6::Qml Qt6::Quick)
 

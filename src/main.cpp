@@ -1,7 +1,7 @@
 #include <QGuiApplication>
 #include <QQmlApplicationEngine>
 #include <QQmlContext>
-
+#include "ui/Logger.h"
 int main(int argc, char *argv[])
 {
     QGuiApplication app(argc, argv);
@@ -20,7 +20,7 @@ int main(int argc, char *argv[])
             if (!obj && url == objUrl)
                 QCoreApplication::exit(-1); },
         Qt::QueuedConnection);
-
+    Logger::instance().log("DUPA");
     engine.load(url);
 
     return app.exec();
