@@ -10,6 +10,7 @@ set(QT_FIND_DIR ${QT_DIR}\\lib\\cmake\\Qt6)
 set(QT_BIN_DIR ${QT_DIR}\\bin)
 set(QT_PLUGINS_DIR ${QT_DIR}\\plugins)
 set(CMAKE_PREFIX_PATH "${QT_FIND_DIR}")
+set(CMAKE_AUTOMOC ON)
 
 message(STATUS "Using Qt from: ${QT_FIND_DIR}")
 
@@ -21,10 +22,12 @@ set(SOURCES
     src/main.cpp
     src/utils/Singleton.h
     src/ui/Logger.h
+    src/ui/Logger.cpp
 )
 
-add_executable(pointcloud_viewer
-     ${SOURCES}
+
+qt_add_executable(pointcloud_viewer
+    ${SOURCES}
 )
 
 target_include_directories(pointcloud_viewer PRIVATE src)
@@ -49,5 +52,7 @@ add_custom_command(TARGET pointcloud_viewer POST_BUILD
 
 qt_add_resources(pointcloud_viewer "resources"
     PREFIX "/"
-    FILES qml/main.qml
+    FILES 
+    qml/main.qml
+    qml/LogPanel.qml
 )

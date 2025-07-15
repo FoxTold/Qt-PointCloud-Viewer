@@ -1,6 +1,7 @@
 import QtQuick 2.6
 import QtQuick.Controls 2.0
 import QtQuick.Layouts 1.3
+import PointCloudViewer 1.0
 
 ApplicationWindow {
     id: root
@@ -44,25 +45,12 @@ ApplicationWindow {
                         left: parent.left
                     }
                     onClicked: {
-                        // Placeholder for point cloud loading logic
-                        logArea.text += ": Menu Bar " + menuBar.visible + "\n";
                         menuBar.visible = !menuBar.visible;
                     }
                 }
             }
         }
 
-        ScrollView {
-            id: view
-            Layout.preferredHeight: root.height * 0.2
-            Layout.fillWidth: true
-
-            TextArea {
-                id: logArea
-                readOnly: true
-                wrapMode: TextArea.Wrap
-                text: "Log initialized..."
-            }
-        }
+        LogPanel{}
     }
 }
