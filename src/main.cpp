@@ -2,6 +2,7 @@
 #include <QQmlApplicationEngine>
 #include <QQmlContext>
 #include "ui/Logger.h"
+#include "ui/models/PointCloudLoaderModel.h"
 int main(int argc, char *argv[])
 {
     QGuiApplication app(argc, argv);
@@ -13,6 +14,7 @@ int main(int argc, char *argv[])
     QCoreApplication::setOrganizationName("FoxTold");
 
     qmlRegisterSingletonInstance("PointCloudViewer", 1, 0, "Logger", ui::Logger::instance().get());
+    qmlRegisterSingletonInstance("PointCloudViewer", 1, 0, "PointCloudLoaderModel", ui::models::PointCloudLoaderModel::instance().get());
 
     const QUrl url(QStringLiteral("qrc:/qml/main.qml"));
     QObject::connect(

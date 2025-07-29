@@ -2,7 +2,7 @@ cmake_minimum_required(VERSION 3.16)
 
 project(pointcloud_viewer VERSION 1.0.0 LANGUAGES CXX)
 
-set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 set(QT_DIR "C:\\Qt\\Qt-6.9.1")
@@ -23,6 +23,11 @@ set(SOURCES
     src/utils/Singleton.h
     src/ui/Logger.h
     src/ui/Logger.cpp
+    src/ui/PointCloudLoader.h
+    src/ui/PointCloudLoader.cpp
+    src/ui/models/PointCloudLoaderModel.h
+    src/ui/models/PointCloudLoaderModel.cpp
+
 )
 
 
