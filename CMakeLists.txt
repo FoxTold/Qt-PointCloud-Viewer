@@ -56,3 +56,5 @@ qt_add_resources(pointcloud_viewer "resources"
     qml/main.qml
     qml/LogPanel.qml
 )
+
+add_subdirectory(app)
