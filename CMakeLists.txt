@@ -2,7 +2,7 @@ cmake_minimum_required(VERSION 3.16)
 
 project(pointcloud_viewer VERSION 1.0.0 LANGUAGES CXX)
 
-set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 set(QT_DIR "C:\\Qt\\Qt-6.9.1")
@@ -24,7 +24,6 @@ set(SOURCES
     src/ui/Logger.h
     src/ui/Logger.cpp
 )
-
 
 qt_add_executable(pointcloud_viewer
     ${SOURCES}
@@ -52,7 +51,7 @@ add_custom_command(TARGET pointcloud_viewer POST_BUILD
 
 qt_add_resources(pointcloud_viewer "resources"
     PREFIX "/"
-    FILES 
+    FILES
     qml/main.qml
     qml/LogPanel.qml
 )
