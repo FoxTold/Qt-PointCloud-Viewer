@@ -18,7 +18,7 @@ int main(int argc, char *argv[])
     QCoreApplication::setOrganizationName("FoxTold");
 
     qmlRegisterSingletonInstance("PointCloudViewer", 1, 0, "Logger", ui::Logger::instance().get());
-    qmlRegisterType<RendererWindowModel>("PointCloudViewer", 1, 0, "RendererWindowModel");
+    qmlRegisterType<GLViewport>("PointCloudViewer", 1, 0, "RendererWindowModel");
     
     const QUrl url(QStringLiteral("qrc:/qml/main.qml"));
     QObject::connect(

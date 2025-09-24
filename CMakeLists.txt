@@ -5,13 +5,20 @@ project(pointcloud_viewer VERSION 1.0.0 LANGUAGES CXX)
 set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-set(QT_DIR "F:\\Qt\\Qt-6.9.1")
-set(QT_FIND_DIR ${QT_DIR}\\lib\\cmake\\Qt6)
-set(QT_BIN_DIR ${QT_DIR}\\bin)
-set(QT_PLUGINS_DIR ${QT_DIR}\\plugins)
-set(CMAKE_PREFIX_PATH "${QT_FIND_DIR}")
+if (NOT CMAKE_SYSTEM_NAME STREQUAL "Darwin")
+    message(FATAL_ERROR "This project only supports Windows.")
+    set(QT_DIR "F:\\Qt\\Qt-6.9.1")
+    set(QT_FIND_DIR ${QT_DIR}\\lib\\cmake\\Qt6)
+    set(QT_BIN_DIR ${QT_DIR}\\bin)
+    set(QT_PLUGINS_DIR ${QT_DIR}\\plugins)
+    set(CMAKE_PREFIX_PATH "${QT_FIND_DIR}")
+else()
+    set(GEANT4_USE_OPENGL_X11 FALSE)
+    set(GEANT4_USE_RAYTRACER_X11 FALSE)
+endif()
 set(CMAKE_AUTOMOC ON)
 
+message(${CMAKE_SYSTEM_NAME})
 message(STATUS "Using Qt from: ${QT_FIND_DIR}")
 
 add_subdirectory(deps)
@@ -35,6 +42,7 @@ target_include_directories(pointcloud_viewer PRIVATE src)
 
 target_link_libraries(pointcloud_viewer PRIVATE Qt6::Core Qt6::Widgets Qt6::Qml Qt6::Quick Qt6::OpenGL Qt6::OpenGLWidgets)
 
+if (NOT CMAKE_SYSTEM_NAME STREQUAL "Darwin")
 target_compile_definitions(pointcloud_viewer PRIVATE
     QML_IMPORT_PATH="\"${QT_DIR}/qml\""
 )
@@ -50,6 +58,8 @@ add_custom_command(TARGET pointcloud_viewer POST_BUILD
     "${QT_PLUGINS_DIR}"
     $<TARGET_FILE_DIR:pointcloud_viewer>
 )
+endif()
+
 
 qt_add_resources(pointcloud_viewer "resources"
     PREFIX "/"
