@@ -1,5 +1,5 @@
 import QtQuick 2.6
-import QtQuick.Controls 2.0
+import QtQuick.Controls 2.3
 import QtQuick.Layouts 1.3
 import PointCloudViewer 1.0
 
@@ -12,45 +12,31 @@ ApplicationWindow {
     visible: true
     title: "Point Cloud Viewer"
 
+
+
     ColumnLayout {
-        id: mainLayout
-        spacing: 0
         anchors.fill: parent
-
+        spacing: 0
         RowLayout {
-            id: topSection
-            Layout.fillWidth: true
-            Layout.fillHeight: true
-            Layout.preferredHeight: root.height * 0.8
             spacing: 0
+            
+            // RendererWindowModel {
+            //     id: model
+            //     Component.onCompleted: {
+            //         Logger.info("RendererWindow Created")
+            //     }
+            // }
+            RendererWindowModel{
 
+            } 
             Rectangle {
-                id: menuBar
-                visible: false
-                color: "tomato"
+                color: "blue"
+                // Layout.fillWidth: true
                 Layout.fillHeight: true
-                Layout.preferredWidth: root.width * 0.25
-            }
-
-            Rectangle {
-                id: contentArea
-                color: "lightblue"
-                Layout.fillHeight: true
-                Layout.fillWidth: true
-                Button {
-                    id: openMenuBarButton
-                    text: "X"
-                    anchors {
-                        top: parent.top
-                        left: parent.left
-                    }
-                    onClicked: {
-                        menuBar.visible = !menuBar.visible;
-                    }
-                }
+                Layout.minimumWidth: 50
+                Layout.preferredWidth: root.width * 0.3
             }
         }
-
         LogPanel{}
     }
 }

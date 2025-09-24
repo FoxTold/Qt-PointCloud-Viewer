@@ -13,7 +13,7 @@ namespace
 
 int main(void)
 {
-    constexpr int N = 100000000;
+    constexpr int N = 1000;
     constexpr float radius = 25.0;
     const double phi = std::numbers::pi * (3.0 - std::sqrt(5.0));
 
